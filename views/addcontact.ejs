@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title><%= contact ? 'Edit Contact' : 'Add Contact' %></title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+  <div class="container my-5">
+    <div class="card shadow p-4">
+      <h3 class="mb-4"><%= contact ? 'Edit Contact' : 'Add Contact' %></h3>
+<!--       
+      <form action="<%= contact ? '/update-contact/' + contact._id : '/add-contact' %>" method="POST">
+        <div class="mb-3">
+          <label for="name" class="form-label">Full Name</label>
+          <input type="text" class="form-control" id="name" name="name" required value="<%= contact ? contact.name : '' %>">
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email Address</label>
+          <input type="email" class="form-control" id="email" name="email" required value="<%= contact ? contact.email : '' %>">
+        </div>
+        <div class="mb-3">
+          <label for="phone" class="form-label">Phone Number</label>
+          <input type="text" class="form-control" id="phone" name="phone" required value="<%= contact ? contact.phone : '' %>">
+        </div>
+        <div class="d-flex justify-content-between">
+          <a href="/" class="btn btn-secondary">Back</a>
+          <button type="submit" class="btn <%= contact ? 'btn-warning' : 'btn-success' %>">
+            <%= contact ? 'Update Contact' : 'Save Contact' %>
+          </button>
+        </div>
+      </form>
+       -->
+   <form action="<%= contact ? '/update-contact/' + contact._id : '/add-contact' %>" method="POST">
+  <div class="mb-3">
+    <label for="name" class="form-label">Full Name</label>
+    <input type="text" class="form-control" id="name" name="name" value="<%= contact?.name || '' %>">
+    <% if (errors && errors.name) { %>
+      <small class="text-danger"><%= errors.name %></small>
+    <% } %>
+  </div>
+
+  <div class="mb-3">
+    <label for="email" class="form-label">Email Address</label>
+    <input type="email" class="form-control" id="email" name="email" value="<%= contact?.email || '' %>">
+    <% if (errors && errors.email) { %>
+      <small class="text-danger"><%= errors.email %></small>
+    <% } %>
+  </div>
+
+  <div class="mb-3">
+    <label for="phone" class="form-label">Phone Number</label>
+    <input type="text" class="form-control" id="phone" name="phone" value="<%= contact?.phone || '' %>">
+    <% if (errors && errors.phone) { %>
+      <small class="text-danger"><%= errors.phone %></small>
+    <% } %>
+  </div>
+
+  <div class="d-flex justify-content-between">
+    <a href="/" class="btn btn-secondary">Back</a>
+    <button type="submit" class="btn <%= contact ? 'btn-warning' : 'btn-success' %>">
+      <%= contact ? 'Update Contact' : 'Save Contact' %>
+    </button>
+  </div>
+</form>
+
+      </div>
+  </div>
+</body>
+</html>
